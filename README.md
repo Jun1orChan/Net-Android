@@ -7,17 +7,10 @@
 
 # 使用
 
-1. 在根目录build.gradle中添加：
+1.
 
 ```groovy
-repositories {
-   
-}
-```
-2.
-
-```groovy
-
+    implementation 'org.jun1or.baselib:net:1.0.0'
 ```
 
 # 示例，仅给出RxJava2 + Retrofit2的用法
