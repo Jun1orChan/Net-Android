@@ -7,10 +7,8 @@
 
 # 使用
 
-1.
-
 ```groovy
-    implementation 'org.jun1or.baselib:net:1.0.0'
+    implementation 'org.jun1or.baselib:net:1.0.1'
 ```
 
 # 示例，仅给出RxJava2 + Retrofit2的用法
@@ -129,8 +127,12 @@
 
 参考OkHttp3
 
-
 ## 版本记录
+
+### 1.0.1
+
+- 升级AndroidX
+- 更新okhttp3
 
 ### 1.0.0
 - 初始版本
