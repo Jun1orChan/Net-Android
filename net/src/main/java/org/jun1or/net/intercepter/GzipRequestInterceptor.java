@@ -14,7 +14,9 @@ import okio.Okio;
 
 /**
  * 如果服务器支持请求数据的gzip压缩，可以添加此拦截器
- * Created by Android on 2017/7/13.
+ *
+ * @author Android
+ * @date 2017/7/13
  */
 
 public class GzipRequestInterceptor implements Interceptor {

@@ -5,6 +5,9 @@ import java.io.IOException;
 import okhttp3.Interceptor;
 import okhttp3.Response;
 
+/**
+ * @author cwj
+ */
 public class DownloadProgressInterceptor implements Interceptor {
 
     private DownloadProgressListener mDownloadProgressListener;

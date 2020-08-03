@@ -13,6 +13,9 @@ import okio.ForwardingSource;
 import okio.Okio;
 import okio.Source;
 
+/**
+ * @author cwj
+ */
 public class DownloadProgressResponseBody extends ResponseBody {
 
     private final Handler mMainHandler = new Handler(Looper.getMainLooper());

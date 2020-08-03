@@ -1,8 +1,7 @@
 package org.jun1or.net_android;
 
 
-
-import com.istrong.net_android.BuildConfig;
+import com.jun1or.net_android.BuildConfig;
 
 import org.jun1or.net.download.DownloadProgressInterceptor;
 import org.jun1or.net.download.DownloadProgressListener;

@@ -2,20 +2,21 @@ package org.jun1or.net_android;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.gson.Gson;
+import com.jun1or.net_android.R;
+
 import org.jun1or.net.download.DownloadProgressListener;
 import org.jun1or.net.upload.CountingRequestBody;
 import org.jun1or.net.upload.UploadProgressListener;
-
-import com.istrong.net_android.R;
 
 
 import org.jun1or.util.FileUtil;
@@ -122,8 +123,9 @@ public class NetActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     private void multiFileUpload() {
-        if (mMultiFileUploadDisposable != null)
+        if (mMultiFileUploadDisposable != null) {
             mMultiFileUploadDisposable.dispose();
+        }
         mProgressDialog.show();
         mMultiFileUploadDisposable = Flowable.just("http://202.109.200.36:9028/webapi/api/v1/slgc/public/annexinfo-upload")
                 .flatMap(new Function<String, Publisher<ResponseBody>>() {
@@ -151,7 +153,8 @@ public class NetActivity extends AppCompatActivity implements View.OnClickListen
 
     private RequestBody getMultipartBody() {
         MultipartBody.Builder builder = new MultipartBody.Builder();
-        File file = new File(StorageUtil.getOwnCacheDirectory(this, "file", true), "activity_slidingdrawerlayout.apk");
+        File file = new File(StorageUtil.getCacheDirectory(this, "file"), "activity_slidingdrawerlayout" +
+                ".apk");
         Log.e("TAG", file.exists() + "==============" + file.getAbsolutePath());
         RequestBody resquestBody =
                 RequestBody.create(MediaType.parse("multipart/form-data"), file);
@@ -170,14 +173,16 @@ public class NetActivity extends AppCompatActivity implements View.OnClickListen
 
     //http://47.95.14.230:9998/api/v1/file/upload?is_sys_attachment=true
     private void upload() {
-        if (mUploadDisposable != null)
+        if (mUploadDisposable != null) {
             mUploadDisposable.dispose();
+        }
         mProgressDialog.show();
         mUploadDisposable = Flowable.just("http://47.95.14.230:9998/api/v1/file/upload?is_sys_attachment=true")
                 .flatMap(new Function<String, Publisher<List<UploadResult>>>() {
                     @Override
                     public Publisher<List<UploadResult>> apply(@NonNull String s) throws Exception {
-                        File file = new File(StorageUtil.getOwnCacheDirectory(NetActivity.this, "file", true), "activity_slidingdrawerlayout.apk");
+                        File file = new File(StorageUtil.getCacheDirectory(NetActivity.this, "file"),
+                                "activity_slidingdrawerlayout.apk");
                         Log.e("TAG", file.exists() + "==============" + file.getAbsolutePath());
                         CountingRequestBody resquestBody =
                                 new CountingRequestBody(RequestBody.create(MediaType.parse("multipart/form-data"), file), NetActivity.this);
@@ -203,8 +208,9 @@ public class NetActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     private void downLoad() {
-        if (mDownLoadDisposable != null && !mDownLoadDisposable.isDisposed())
+        if (mDownLoadDisposable != null && !mDownLoadDisposable.isDisposed()) {
             mDownLoadDisposable.dispose();
+        }
         mDownLoadDisposable = Flowable.just("http://www.istrong.cn:8088/pda/pdaupdatewebservice/Android_apk/fjfxt_v2_2.21_2018090502.apk")
                 .flatMap(new Function<String, Publisher<ResponseBody>>() {
                     @Override
@@ -217,7 +223,8 @@ public class NetActivity extends AppCompatActivity implements View.OnClickListen
                 .map(new Function<ResponseBody, File>() {
                     @Override
                     public File apply(@NonNull ResponseBody responseBody) throws Exception {
-                        File file = new File(StorageUtil.getOwnCacheDirectory(NetActivity.this, "file", true), "activity_slidingdrawerlayout.apk");
+                        File file = new File(StorageUtil.getCacheDirectory(NetActivity.this, "file"),
+                                "activity_slidingdrawerlayout.apk");
                         FileUtil.writeFile(responseBody.byteStream(), file);
                         return file;
                     }
@@ -238,9 +245,9 @@ public class NetActivity extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void updateDownload(final long bytesRead, final long contentLength, final boolean done) {
-        if (!done)
+        if (!done) {
             mBtnDownLoad.setText("bytesRead:" + bytesRead + "===" + "contentLength:" + contentLength);
-        else {
+        } else {
             mBtnDownLoad.setText("DOWNLOAD");
         }
     }

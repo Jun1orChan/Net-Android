@@ -14,6 +14,9 @@ import okio.ForwardingSink;
 import okio.Okio;
 import okio.Sink;
 
+/**
+ * @author cwj
+ */
 public class CountingRequestBody extends RequestBody {
 
     private final Handler mMainHandler = new Handler(Looper.getMainLooper());

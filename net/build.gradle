@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
         minSdkVersion 17
@@ -18,11 +18,16 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.squareup.okhttp3:okhttp:3.8.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.9'
 }
 
 //添加
@@ -30,7 +35,7 @@ publish {
     userOrg = 'jun1or'//bintray.com用户名
     groupId = 'org.jun1or.baselib'//jcenter上的路径
     artifactId = 'net'//项目名称
-    publishVersion = '1.0.0'//版本号
+    publishVersion = '1.0.1'//版本号
     desc = ''//描述，不重要
     website = 'https://github.com/Jun1orChan/Net-Android'//网站，不重要
 }
