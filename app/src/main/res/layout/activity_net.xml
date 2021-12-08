@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="先单击下载，下载文件之后，再利用下载的文件进行上传测试"/>
+
+
+    <Button
+        android:id="@+id/btnDownload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="download"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="upload"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btnMultiFileUpload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="multiFileUpload"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btnHeadRequest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="向百度发期HEAD请求"/>
+
+</LinearLayout>

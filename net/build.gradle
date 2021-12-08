@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+apply from: 'upload_nexus.gradle'
+
+android {
+    compileSdkVersion 31
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly 'com.squareup.okhttp3:okhttp:3.14.9'
+}
